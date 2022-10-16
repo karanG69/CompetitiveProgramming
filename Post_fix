@@ -1,0 +1,71 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <stack>
+using namespace std;
+
+int main() {
+    stack<char> st;
+    //vector<string> arr[];
+    char a;
+    int size=0;
+    while(cin>>a){
+        st.push(a);
+        size++;
+    }
+    char arr[size];
+    int i=0;
+    while(!st.empty()){
+        arr[i]=st.top();
+        st.pop();
+        i++;
+    }
+    int count_x=0;
+    int count_num=0;
+    for(int i=0;i<size;i++){
+        if(arr[i]=='+'|| arr[i]=='-'|| arr[i]=='*'||arr[i]=='/'){
+            count_x++;
+        }
+        else{
+            count_num++;
+        }
+    }
+    if(count_x>=count_num){
+        cout<<"Invalid Input";
+        return 0;
+    }
+    stack<int> stt;
+    for(int i=size-1;i>=0;i--){
+        if(arr[i]>='0' && arr[i]<='9'){
+            stt.push(arr[i]-'0');
+            //cout<<stt.top()<<" ";
+        }
+        else{
+            //cout<<arr[1]<<endl;
+            int ope1=stt.top();
+            stt.pop();
+            //cout<<ope1<<" ";
+            int ope2=stt.top();
+            stt.pop();
+            //cout<<ope2<<" ";
+            switch(arr[i]){
+                case '+':
+                    stt.push(ope1+ope2);
+                    break;
+                case '-':
+                    stt.push(ope1-ope2);
+                    break;
+                case '*':
+                    stt.push(ope1*ope2);
+                    break;
+                case '/':
+                    stt.push(ope2/ope1);
+                    break;
+            }
+        }   
+    }
+    cout<<stt.top();
+    return 0;
+}
