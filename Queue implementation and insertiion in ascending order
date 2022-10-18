@@ -41,6 +41,13 @@ class queue{
         }
         return arr[front];
     }
+    int last(){
+    if(front==-1||front>rear){
+            return -1;
+        }
+        return arr[rear];
+    }
+    
     bool empty(){
         if(front==-1||front>rear){
             return true;
@@ -63,9 +70,10 @@ int main()
     for(int i=0;i<n;i++){
         int a;
         cin>>a;
-        if(a>que.top()){
-            que.enque(a);
+        while(!(a>que.last())){
+            cin>>a;
         }
+        que.enque(a);
     }
     while(!que.empty()){
         cout<<que.top()<<" ";
