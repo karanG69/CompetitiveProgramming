@@ -1,0 +1,75 @@
+#include <iostream>
+
+using namespace std;
+class queue{
+ 
+    int size;
+    int *arr;
+    int front;
+    int rear;
+    
+    public:
+    
+    queue(int s){
+        this->size=s;
+        arr=new int[size];
+        rear=-1;
+        front=-1;
+    }
+    
+    void enque(int d){
+        if(rear==size-1){
+            cout<<"Queue Overflow";
+            return ;
+        }
+        rear++;
+        arr[rear]=d;
+        if(front==-1){
+            front++;
+        }
+    }
+    void deque(){
+        if(front==-1||front>rear){
+            cout<<"Queue Underflow";
+            return ;
+        }
+        front++;
+    }
+    int top(){
+        if(front==-1||front>rear){
+            return -1;
+        }
+        return arr[front];
+    }
+    bool empty(){
+        if(front==-1||front>rear){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+};
+
+int main()
+{
+    int n;
+    cin>>n;
+    if(n<=2||n>10){
+        cout<<"Invalid Input";
+        return 0;
+    }
+    queue que(n);
+    for(int i=0;i<n;i++){
+        int a;
+        cin>>a;
+        if(a>que.top()){
+            que.enque(a);
+        }
+    }
+    while(!que.empty()){
+        cout<<que.top()<<" ";
+        que.deque();
+    }
+    return 0;
+}
