@@ -1,0 +1,34 @@
+def getTotalX(a, b):
+    a.sort()
+    b.sort()
+    counta=0
+    countb=0
+    countf=0    
+    # Write your code here
+    f=a[-1]
+    while f<=b[0]:
+        for i in a:
+            if f%i==0:
+                counta+=1
+            else:
+                break
+        if counta==len(a):
+            for j in b:
+                if j%f==0:
+                    countb+=1
+                else:
+                    break
+            if countb==len(b):
+                countf+=1
+                f+=1
+                counta=0
+                countb=0
+            else:
+                counta=0
+                countb=0
+                f+=1
+        else:
+            counta=0
+            countb=0
+            f+=1
+    return countf
