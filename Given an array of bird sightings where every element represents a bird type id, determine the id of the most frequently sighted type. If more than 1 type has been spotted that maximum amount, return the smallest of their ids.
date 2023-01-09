@@ -1,0 +1,16 @@
+def migratoryBirds(arr):
+    unique_list=[]
+    for i in arr:
+        if i not in unique_list:
+            unique_list.append(i)
+    occ=[]
+    key=[]
+    for i in unique_list:
+        occ.append(arr.count(i))
+        key.append(i)
+    max_occ=[]
+    for i in range(len(occ)):
+        if occ[i]==max(occ):
+            max_occ.append(key[i])
+    
+    return min(max_occ)
