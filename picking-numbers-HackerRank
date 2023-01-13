@@ -1,0 +1,13 @@
+def pickingNumbers(a):
+    # Write your code here
+    a.sort(reverse=True)
+    lenn=0
+    count=0
+    for i in range(len(a)-1):
+        for j in range(i+1,len(a)):
+            if a[i]-a[j] >=0 and a[i]-a[j]<=1:
+                count+=1
+        if count>lenn:
+            lenn=count
+        count=0
+    return lenn+1
