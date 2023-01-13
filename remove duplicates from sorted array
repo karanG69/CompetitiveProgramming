@@ -1,0 +1,32 @@
+/*Since it is impossible to change the length of the array in some languages, you must 
+instead have the result be placed in the first part of the array nums. More formally, 
+if there are k elements after removing the duplicates, then the first k elements of nums 
+should hold the final result.
+It does not matter what you leave beyond the first k elements.
+You can print the result arrey with unique elements by taking the range from 0 to the integer
+returned by the bellow function */
+
+
+int removeDuplicates(vector<int>& nums) {
+        vector<int> unique_nums;
+        for(int i=0;i<nums.size();i++){
+            int count=0;
+            if (unique_nums.size()==0){
+                count++;
+            }
+            else{
+                for (int j=0;j<unique_nums.size();j++){
+                    if (unique_nums[j]!=nums[i]){
+                        count++;
+                    }
+                }
+            }
+            if (count>=unique_nums.size()){
+                unique_nums.push_back(nums[i]);
+            }
+        }
+        for(int i=0;i<unique_nums.size();i++){
+            nums[i]=unique_nums[i];
+        }
+        return unique_nums.size();
+    }
