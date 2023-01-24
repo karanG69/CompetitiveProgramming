@@ -1,0 +1,20 @@
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        ind=[]
+        for i in range(len(nums)):
+            ind.append(i)
+        mapp=dict(zip(ind,nums))
+        s_nums=sorted(nums)
+        for i in range(len(s_nums)-1):
+            if s_nums[i]==s_nums[i+1]:
+                for j in mapp:
+                    if mapp[j]==s_nums[i]:
+                        first=j
+                        del mapp[j]
+                        break
+                for l in mapp:
+                    if mapp[l]==s_nums[i]:
+                        second=l
+                        if abs(first-second)<=k:
+                            return True
+        return False
