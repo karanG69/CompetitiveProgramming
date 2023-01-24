@@ -1,0 +1,16 @@
+def pivotIndex(self, nums: List[int]) -> int:
+        if len(nums)==0 :
+            return -1
+        sumL=0
+        sumR=0
+        for i in nums[1:]:
+            sumR+=i
+        for i in range(len(nums)):
+            if sumL==sumR:
+                return i
+            else:
+                if i==len(nums)-1:
+                    return -1
+                sumL+=nums[i]
+                sumR-=nums[i+1]
+        return -1
