@@ -1,0 +1,25 @@
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        mapp={}
+        u_s=[]
+        u_t=[]
+        
+        for i in s:
+            if i not in u_s:
+                u_s.append(i)
+        for i in t:
+            if i not in u_t:
+                u_t.append(i)
+        if len (u_s)!=len(u_t):
+            return False
+
+
+        for i in range(len(s)):
+            if (s[i] not in mapp):
+                mapp[s[i]]=t[i]
+            else:
+                if mapp[s[i]]==t[i]:
+                    continue
+                else:
+                    return False        
+        return True
