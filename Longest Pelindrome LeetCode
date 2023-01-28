@@ -1,0 +1,29 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        #Creating  a hash table with keys as unique letters in s and values as their frequencies.
+        letters={}
+        for i in s:
+            if i not in letters:
+                letters[i]=1
+            else:
+                letters[i]+=1
+        # checking the len of the hash table.
+        # If the len is 1 their is only one letter in the string and return its frequency.
+        if len(letters)==1:
+            return letters[s[0]]
+
+        lenn=0
+        odd=0
+
+        for i in letters.values():
+            if i>1:
+                if i%2==0:
+                    lenn+=i
+                else:
+                    lenn+=i-1
+                    odd+=1
+            else:
+                odd+=1
+        if odd>0:
+            lenn+=1
+        return lenn
