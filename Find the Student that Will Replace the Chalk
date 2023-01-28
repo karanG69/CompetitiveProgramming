@@ -1,0 +1,21 @@
+class Solution:
+    def chalkReplacer(self, chalk: List[int], k: int) -> int:
+        summ=0
+        for i in chalk:
+            summ+=i
+        if k<summ:
+            j=0
+            while chalk[j]<=k and j<=len(chalk):
+                k-=chalk[j]
+                j+=1
+            return j
+        else:
+            if k%summ == 0:
+                return 0
+            else:
+                modd=k%summ
+                i=0
+                while modd>=chalk[i]:
+                    modd-=chalk[i]
+                    i+=1
+                return i
