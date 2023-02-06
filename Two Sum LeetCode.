@@ -1,0 +1,11 @@
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hash_map={}
+        ans=[]
+        for i in range(len(nums)):
+            hash_map[nums[i]]=i
+        for i in nums:
+            if (target-i) in hash_map and hash_map[target-i]!=nums.index(i):
+                ans.append(nums.index(i))
+                ans.append(hash_map[target-i])
+                return ans
