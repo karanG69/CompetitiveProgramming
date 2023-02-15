@@ -1,0 +1,10 @@
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        bits=bin(n).replace("0b", "")
+        if len(bits)<32:
+            inc=(32-len(bits))*'0'
+            inc+=bits
+            bits=inc
+        return int(bits[::-1],2)
+        
+        
