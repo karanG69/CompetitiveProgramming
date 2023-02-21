@@ -1,0 +1,13 @@
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        hash_m={}
+        for i in s:
+            if i in hash_m:
+                hash_m[i]+=1
+            else:
+                hash_m[i]=1
+        for i in hash_m:
+            if hash_m[i]==1:
+                return s.index(i)
+        else:
+            return -1
